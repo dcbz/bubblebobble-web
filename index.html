@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bubble Bobble Web Prototype</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #101018; color: white; font-family: system-ui, sans-serif; }
+    body { display: grid; place-items: center; }
+    main { text-align: center; }
+    /* Keep the 256x256 arcade raster on an integer pixel grid.  Fractional
+       scaling (for example 256 -> 720) makes rounds 6/7's alternating
+       one-pixel background pens look like smeared or uneven textures even
+       with image-rendering:pixelated. */
+    canvas { width: 768px; height: 768px; image-rendering: pixelated; image-rendering: crisp-edges; background: #08091c; border: 4px solid #fff36a; }
+    @media (max-width: 820px), (max-height: 860px) {
+      canvas { width: 512px; height: 512px; }
+    }
+    @media (max-width: 560px), (max-height: 610px) {
+      canvas { width: 256px; height: 256px; }
+    }
+    .hint { margin-top: 12px; color: #b9c7ff; font-size: 14px; }
+    .error { max-width: 720px; color: #ff9a9a; white-space: pre-wrap; text-align: left; }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="screen" width="256" height="256"></canvas>
+    <div class="hint">1/Enter: start · Arrows: move · Up/X: jump (press, then release) · Space/Z/Slash: blow bubble — walk into a trapped enemy to pop it and collect the food it drops · falling through a bottom hole returns from the top · N: next round</div>
+    <div id="error" class="error"></div>
+  </main>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
